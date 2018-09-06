@@ -33,6 +33,7 @@ import json
 import datetime
 import numpy as np
 import skimage.draw
+import warnings
 
 # Root directory of the project
 ROOT_DIR = os.path.abspath("../../")
@@ -41,6 +42,9 @@ ROOT_DIR = os.path.abspath("../../")
 sys.path.append(ROOT_DIR)  # To find local version of the library
 from mrcnn.config import Config
 from mrcnn import model as modellib, utils
+
+# Silence warning specific to scikit-image 0.15
+warnings.filterwarnings('ignore', message="Anti-aliasing will be enabled by default")
 
 # Path to trained weights file
 COCO_WEIGHTS_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.h5")
